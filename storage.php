@@ -1,36 +1,10 @@
-<?php 	
-		include 'connection.php';
-			if(!empty($_POST)) {
-				$username = $_POST['username'];
-				$date_in = $_POST['datein'];
-				$time_in = $_POST['timein'];
-				$date_out = $_POST['dateout'];
-				$time_out = $_POST['timeout'];
-				$pets = $_POST['jumlah'];
-				var_dump($_POST);
-
-				$dateTimeInStr = $date_in . " " . $time_in;
-				$dateTimeIn = DateTime::createFromFormat("Y-m-d H:i", $dateTimeInStr);
-				$dateTimeOutStr = $date_out . " " . $time_out;
-				$dateTimeOut = DateTime::createFromFormat("Y-m-d H:i", $dateTimeOutStr);
-				$waktu = $dateTimeOut->getTimestamp() - $dateTimeIn->getTimestamp();
-				$harga = (int)(round($waktu/3600) * 5000);
-
-				$query = "INSERT into bookhotel SET username='$username', cek_in='$date_in', wktu_cekin='$time_in', cek_out='$date_out', wktu_cekout='$time_out', waktu='$waktu', harga='$harga', pets='$pets'";
-				mysqli_query($link,$query);
-				header("location:sleep.php");
-			}
-
- ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>OUR PAWS</title>
+<title>Pets House a Animals & Pets Category Flat Bootstrap Responsive  Website Template | Home :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.0.min.js"></script>
-<link href="css/style3.css" rel="stylesheet" type="text/css" media="all" />
-<link href='//fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" type="text/css" href="css/style1.css" />
@@ -88,13 +62,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  <div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=""/></span>
 					<ul class="nav1">
-						<li><a href="../home.php" class="active">Home</a></li>
+						<li><a href="home.php" class="active">Home</a></li>
 						<li><a class="scroll" href="#about">About</a></li>
 						<li><a class="scroll" href="#services">Services</a></li>
 						<li><a class="scroll" href="#gallery">Gallery</a></li>
 						<li><a class="scroll" href="#contact" >Contact</a></li>
-						<li><a href="../keluar.php">Log Out</a></li>'
-
 					</ul>	
 					<!-- script-for-menu -->
 					 <script>
@@ -132,16 +104,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="about" id="about">
 	<div class="container">
 		<div class="about-main">
-			          <h3>Sleepover</h3>
+			          <h3>Storage</h3>
 			<div class="col-md-6 about-left">
-				<img src="images/sleep.png" alt="" class="img-responsive">
+				<img src="images/awalstr.png" alt="" class="img-responsive">
 			</div>
 			<div class="col-md-6 about-right">
-				<h4>Hotel kucing</h4>
+				<h4>Dapatkan kualitas barang yang tinggi dengan harga terbaik</h4>
 				<!-- <h5>Temporibus autem</h5> -->
-				<p>Dalam sehari, bisa jadi kegiatan yang paling menyita waktu kucing adalah tidur. Kucing paling suka tidur dan bergelung dalam waktu yang lama. Namun jangan salah, kucing tidur bukan karena malas, tapi mereka butuh cadangan energi yang besar untuk menangkap mangsa atau bahaya yang mendekat. Jadi, jangan biarkan kesibukan anda mengganggu jadwal tidur si kucing ya.</p>			
+				<p>Luangkan uang dan waktu anda dengan membeli persediaan dan aksesoris kucing anda bersama kami. Kami juga menyediakan obat-obatan yang dibutuhkan oleh kucing anda. Percayakan kesehatan kucing anda kepada kami</p>			
 			    <ul>
-			    	<li><a data-toggle="modal" data-target="#bookSleepModal" href="#bookSleepModal"><span class="fts"></span>Book Now</a></li>
+			    	<!-- <li><a href="../pets/Storage/barang.php"><span class="fts"></span>Order Now</a></li> -->
 			  <!--   	<li><a href="#"><span class="brh"></span>Brush</a></li> -->
 			    	<!-- <li><a href="#"> <span class="feed"> </span>Feed </a></li> -->
 			    </ul>
@@ -172,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 footer-left">
 					<h4>Information</h4>
 					<ul>
-						<li><a class="scroll" href="index.html"><span class="pt-foot"> </span>Home</a></li>
+						<li><a class="scroll" href="home.php"><span class="pt-foot"> </span>Home</a></li>
 						<li><a class="scroll" href="#about"><span class="pt-foot"> </span>About</a></li>
 						<li><a class="scroll" href="#services"><span class="pt-foot"> </span>Services</a></li>
 						<li><a class="scroll" href="#gallery"><span class="pt-foot"> </span>Gallery</a></li>
@@ -222,8 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="footer-text">			
 				<div class="ft-right">
-					<p>© 2018 Our Paws</p>
-					<p>created by Amel & Malaq</p>
+					<p>© 2018 Our Paws</a> </p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -246,110 +217,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </div>
-
-	<!-- Modal -->
-<div id="bookSleepModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content modal-white">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Sleepover Booking Widget</h4>
-      </div>
-      <div class="modal-body">
-      <div>
-			<form action="#" method="post" class="w3_form_post">
-				<div class="w3_agileits_main_grid w3l_main_grid">
-					<div class="agileits_grid">
-						<!-- <h5>Name * </h5>
-						<div class="nam">
-							<input type="text" name="First name" placeholder="First Name" required="">
-						</div>
-						<div class="nam1">
-							<input type="text" name="Last name" placeholder="Last Name" required="">
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				<div class="w3_agileits_main_grid w3l_main_grid">
-					<div class="agileits_grid">
-						<h5>E-mail </h5>
-							<input type="email" name="Email" placeholder="ex : myname@gmail.com" required="">
-					</div>
-				</div> -->
-				<!-- <div class="agileits_main_grid w3_agileits_main_grid">
-					<div class="wthree_grid">
-						<h5>Room Type</h5>
-						<select id="category" name="category" required="">
-							<option value="none">None</option>
-							<option value="category1">Single Room</option>
-							<option value="category2">Double Room</option>
-							<option value="category3">Suit Room</option>
-							
-						</select>
-					</div>
-				</div> -->
-				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
-					<div class="agileinfo_grid">
-					<h5>Check In & Time *</h5>
-						
-						<div class="agileits_w3layouts_main_gridl">
-							<input class="date" id="datepicker" name="datein" type="date" value="yyyy:mm:dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}" required="">
-						</div>
-						<div class="agileits_w3layouts_main_gridr">
-							<input type="time" name="timein" placeholder=" " required="">
-						</div>
-						<div class="clear"> </div>
-					</div>
-				</div>
-				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
-					<div class="agileinfo_grid">
-					<h5>Check Out & Time *</h5>
-						
-						<div class="agileits_w3layouts_main_gridl">
-							<input class="date" id="datepicker1" name="dateout" type="date" value="yyyy:mm:dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}" required="">
-						</div>
-						<div class="agileits_w3layouts_main_gridr">
-							<input type="time" name="timeout" placeholder=" " required="">
-						</div>
-						<div class="clear"> </div>
-					</div>
-				</div>
-				<div class="agileinfo_main_grid">
-					<div class="agileits_w3layouts_grid">
-						<h5>Number of Pets *</h5>
-						<select id="category1" name="jumlah" required="">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="">5</option>
-						</select>
-					</div>
-				</div>
-				
-				
-				
-				<div class="w3_main_grid">
-					
-					<div class="w3_main_grid_right">
-						<input type="submit" value="Book Now">
-					</div>
-					<div class="clear">
-					 </div>
-				</div>
-			</form>
-		</div>
-		</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 </body>
 </html>
 

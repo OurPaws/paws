@@ -86,11 +86,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  <div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=""/></span>
 					<ul class="nav1">
-						<li><a href="index.html" class="active">Home</a></li>
+						<li><a href="../home.php" class="active">Home</a></li>
 						<li><a class="scroll" href="#about">About</a></li>
 						<li><a class="scroll" href="#services">Services</a></li>
 						<li><a class="scroll" href="#gallery">Gallery</a></li>
 						<li><a class="scroll" href="#contact" >Contact</a></li>
+						<li><a href="../keluar.php">Log Out</a></li>'
 					</ul>	
 					<!-- script-for-menu -->
 					 <script>
@@ -175,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a class="scroll" href="#contact"><span class="pt-foot"> </span>Contact</a></li>
 					</ul>
 				</div>
-				<div class="col-md-3 footer-left">
+				<!-- <div class="col-md-3 footer-left">
 					<h4>New Solutions</h4>
 					<ul>
 						<li><a href="#"><span class="pt-foot"> </span>Notare quam littera</a></li>
@@ -184,7 +185,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#"><span class="pt-foot"> </span>Malesuada orci purus</a></li>
 						<li><a href="#"><span class="pt-foot"> </span>Quisque ullamcorper tellus</a></li>
 					</ul>
-				</div>
+				</div> -->
 				<!-- <div class="col-md-3 footer-left">
 					<h4>Flickr Posts</h4>
 					<div class="flickr">
@@ -218,7 +219,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="footer-text">			
 				<div class="ft-right">
-					<p>© 2016 Pets House. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+					<p>© 2018 Our Paws</p>
+					<p>created by Amel & Malaq</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
