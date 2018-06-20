@@ -1,10 +1,34 @@
+<?php 	
+								include 'connection.php';
+								if(!empty($_POST)) {
+									$username = $_POST['username'];
+									$jenis = $_POST['kategori'];
+									$jenis_spl = explode('|', $jenis);
+									$nama_jenis = $jenis_spl[0];
+									$harga = $jenis_spl[1];
+									$date = $_POST['date'];
+									$time = $_POST['time'];
+									$pets = $_POST['jumlah'];
+
+									$query = "INSERT into bookgrooming SET username='$username', jns_grooming='$nama_jenis', harga='$harga', date='$date', time='$time', pets='$pets'";
+									mysqli_query($link,$query);
+									header("location:grooming.php");
+								}
+								
+
+
+							 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Pets House a Animals & Pets Category Flat Bootstrap Responsive  Website Template | Home :: w3layouts</title>
+<title>OUR PAWS</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.0.min.js"></script>
+<!-- //js -->
+<link href="css/style3.css" rel="stylesheet" type="text/css" media="all" />
+<link href='//fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" type="text/css" href="css/style1.css" />
@@ -113,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- <h5>Temporibus autem</h5> -->
 				<p>Walaupun kucing-kucing mengandalkan lidah untuk tetap bersih dan cantik, mereka juga mmebutuhkan grooming yang dibantu oleh profesional. Fungsi grooming itu sendiri adalah melatih kucing untuk terbiasa dengan sentuhan tangan manusia. Selain itu grooming juga dapat membantu pemilik untuk mengikuti perkembangan si kucing. Dengan grooming ini, kucing dapat diberi perhatian khusus yang tidak ia dapatkan di rumahnya.</p>			
 			    <ul>
-			    	<li><a href="single.html"><span class="fts"></span>Reservation Now</a></li>
+			    	<li><a data-toggle="modal" data-target="#bookGroomModal" href="#bookGroomModal"><span class="fts"></span>Reservation Now</a></li>
 			  <!--   	<li><a href="#"><span class="brh"></span>Brush</a></li> -->
 			    	<!-- <li><a href="#"> <span class="feed"> </span>Feed </a></li> -->
 			    </ul>
@@ -217,6 +241,131 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </div>
+
+<!-- Modal -->
+<div id="bookGroomModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content modal-white">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Grooming Booking Widget</h4>
+      </div>
+      <div class="modal-body">
+        
+      	<div>
+			<form action="#" method="post" class="w3_form_post">
+				<div class="w3_agileits_main_grid w3l_main_grid">
+					<div class="agileits_grid">
+
+						<!-- <h5>Name * </h5>
+						<div class="nam">
+							<input type="text" name="First name" placeholder="First Name" required="">
+						</div>
+						<div class="nam1">
+							<input type="text" name="Last name" placeholder="Last Name" required="">
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="w3_agileits_main_grid w3l_main_grid">
+					<div class="agileits_grid">
+						<h5>E-mail </h5>
+							<input type="email" name="Email" placeholder="ex : myname@gmail.com" required="">
+					</div>
+				</div> -->
+				<div class="agileits_main_grid w3_agileits_main_grid">
+					<div class="wthree_grid">
+						<h5>Grooming Type</h5>
+							<select id="category" placeholder="Select one" name="kategori" required="">
+							 <?php 
+								
+
+								 $tipe = "select * FROM grooming";
+								 $data = mysqli_query($link,$tipe);
+								 // mysql_select_db(database_name)
+								 // $pilih = mysql_select_db("paws",$connection);	
+
+								 while($row=mysqli_fetch_array($data)){
+								       $nomor = $row["no_urut"];
+                                       $jenis = $row['jns_grooming'];
+                                       $harga = $row["hrg_grooming"];
+                                   echo "<option value=\"$jenis|$harga\">$jenis | Rp $harga</option>";
+                                     // echo "<option value=\"$id_namamenu|$harga\">" .$Nama_Menu."</option>";
+                               }
+							 ?> 
+
+							<!-- <option value="none">None</option>
+							<option value="category1">Single Room</option>
+							<option value="category2">Double Room</option>
+							<option value="category3">Suit Room</option>
+							 -->
+						</select>
+					</div>
+				</div>
+				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
+					<div class="agileinfo_grid">
+					<h5>Check In & Time *</h5>
+						
+						<div class="agileits_w3layouts_main_gridl">
+							<input class="date" id="datepicker" name="date" type="date" value="yyyy:mm:dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}" required="">
+						</div>
+						<div class="agileits_w3layouts_main_gridr">
+							<input type="time" name="time" placeholder=" " required="">
+						</div>
+						<div class="clear"> </div>
+					</div>
+				</div>
+				<!-- <div class="agileits_w3layouts_main_grid w3ls_main_grid">
+					<div class="agileinfo_grid">
+					<h5>Check Out & Time *</h5>
+						
+						<div class="agileits_w3layouts_main_gridl">
+							<input class="date" id="datepicker1" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}" required="">
+						</div>
+						<div class="agileits_w3layouts_main_gridr">
+							<input type="time" name="Time" placeholder=" " required="">
+						</div>
+						<div class="clear"> </div>
+					</div>
+				</div> -->
+				<div class="agileinfo_main_grid">
+					<div class="agileits_w3layouts_grid">
+						<h5>Number of Pets *</h5>
+						<select id="category1" name="jumlah" required="">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</div>
+				</div>
+				
+				
+				<div class="w3_main_grid">
+					
+					<div class="w3_main_grid_right">
+						<input type="submit" value="Book Now">
+					</div>
+					<div class="clear">
+							
+					 </div>
+				</div>
+			</form>
+		</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 </body>
 </html>
 
